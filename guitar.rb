@@ -22,6 +22,18 @@ def strings(symbol_lists)
 end
 
 def chord(chord_name, symbol_lists)
+  if chord_name.include?('Major')  || chord_name.include?('Minor')
+    puts ("")
+    puts ("                       #{chord_name}")
+    puts ("")
+    puts ("        1   2   3   4   5   6   7   8   9   10  11  12")
+    puts (strings(symbol_lists))
+    puts ("")
+    puts ("     1 = Index Finger, 2 = Middle Finger, 3 = Ring Finger,")
+    puts ("     4 = Little Finger, T = Thumb,")
+    puts ("     o = Play String, x = Don't Play String")
+    puts ("")
+  else
     puts ("")
     puts ("                       #{chord_name}")
     puts ("")
@@ -32,10 +44,24 @@ def chord(chord_name, symbol_lists)
     puts ("     4 = Kleiner Finger, T = Daumen,")
     puts ("     o = Saite anschlagen, x = Saite nicht anschlagen")
     puts ("")
+  end
 end
 
+translation_map = {
+  'A-Dur' => 'A-Major',
+  'A-Major' => 'A-Major',
+  'A-Moll' => 'A-Minor',
+  'A-Minor' => 'A-Minor',
+  'C-Dur' => 'C-Major',
+  'C-Major' => 'C-Major',
+  'D-Dur' => 'D-Major',
+  'D-Major' => 'D-Major',
+  'E-Dur' => 'E-Major',
+  'E-Major' => 'E-Major'
+}
+
 chord_map = {
-  'A-Dur' => [
+  'A-Major' => [
     ["o"],
     [" ","-","3"],
     [" ","-","2"],
@@ -43,7 +69,7 @@ chord_map = {
     ["o"],
     ["x"]
   ],
-  'A-Moll' => [
+  'A-Minor' => [
     ["o"],
     [" ","1"],
     [" ","-","3"],
@@ -51,7 +77,7 @@ chord_map = {
     ["o"],
     ["x"]
   ],
-  'C-Dur' => [
+  'C-Major' => [
     ["o"],
     [" ","1"],
     ["o"],
@@ -59,7 +85,7 @@ chord_map = {
     [" ","-","-","3"],
     ["x"]
   ],
-  'D-Dur' => [
+  'D-Major' => [
     [" ","-","2"],
     [" ","-","-","3"],
     [" ","-","1"],
@@ -67,7 +93,7 @@ chord_map = {
     ["x"],
     ["x"]
   ],
-  'E-Dur' => [
+  'E-Major' => [
     ["o"],
     ["o"],
     [" ","1"],
@@ -78,4 +104,4 @@ chord_map = {
 }
 
 chord = ARGV[0]
-chord(chord, chord_map[chord]) unless chord_map[chord].nil?
+chord(chord, chord_map[translation_map[chord]]) unless translation_map[chord].nil?
