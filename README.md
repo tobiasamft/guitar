@@ -1,5 +1,5 @@
 # guitar
-Simple program to show chords...
+Simple program to show some chords...
 
 (German / English)
 
